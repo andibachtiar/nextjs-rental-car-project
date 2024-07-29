@@ -15,7 +15,7 @@ const SearchBar = () => {
           setManufacturer={setManufacturer}
         />
       </div>
-      <input type="text" />
+      <input type="text" value={"oke"} />
       {/* <CustomButton>search</CustomButton> */}
     </form>
   );

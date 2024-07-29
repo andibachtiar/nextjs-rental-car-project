@@ -7,7 +7,7 @@ export default function Home() {
     <main className="overflow-hidden">
       <Hero />
 
-      <div className="mt-12 padding-x padding-y" id="discover">
+      <div className="min-h-[720px] mt-12 padding-x padding-y" id="discover">
         <div className="home__text-container">
           <h1 className="text-4xl font-extrabold">Car Catalogue</h1>
           <p>Explore the car you like</p>
@@ -16,10 +16,10 @@ export default function Home() {
         <div className="home__filters">
           <SearchBar />
 
-          <div className="home__folter-container">
+          {/* <div className="home__folter-container">
             <CustomFilter title="fuel" />
             <CustomFilter title="year" />
-          </div>
+          </div> */}
         </div>
         {/* <CarCatalogue /> */}
       </div>
