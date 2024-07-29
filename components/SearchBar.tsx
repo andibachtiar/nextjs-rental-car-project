@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CustomButton, SearcManufacturer } from "./";
+import { getCars } from "@/utils";
 
 const SearchBar = () => {
   const [manufacturer, setManufacturer] = useState("");
@@ -9,13 +10,13 @@ const SearchBar = () => {
 
   return (
     <form onSubmit={handleSearch} className="searchbar">
+      {manufacturer}
       <div className="searchbar__item">
         <SearcManufacturer
           manufacturer={manufacturer}
           setManufacturer={setManufacturer}
         />
       </div>
-      <input type="text" value={"oke"} />
       {/* <CustomButton>search</CustomButton> */}
     </form>
   );

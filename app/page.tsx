@@ -1,8 +1,12 @@
-import { CustomFilter, SearchBar } from "@/components";
+import { CarCard, CustomFilter, SearchBar } from "@/components";
 import Hero from "@/components/Hero";
+import { CarsType, IsError, getCars, isError } from "@/utils";
 import Image from "next/image";
+import { isArray } from "util";
 
-export default function Home() {
+export default async function Home() {
+  const cars: CarsType[] = await getCars("corolla");
+
   return (
     <main className="overflow-hidden">
       <Hero />
@@ -21,7 +25,23 @@ export default function Home() {
             <CustomFilter title="year" />
           </div> */}
         </div>
-        {/* <CarCatalogue /> */}
+
+        <section>
+          {isError(cars) && (
+            <div>
+              <h2 className="text-black text-xl">Oops! No results</h2>
+              <p>{cars.error}</p>
+            </div>
+          )}
+
+          {Array.isArray(cars) && cars.length > 0 && (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+              {cars.map((car, index) => {
+                return <CarCard car={car} key={index} />;
+              })}
+            </div>
+          )}
+        </section>
       </div>
     </main>
   );
