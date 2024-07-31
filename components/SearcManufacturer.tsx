@@ -22,6 +22,7 @@ const SearcManufacturer = ({
   const [showOption, setShowOption] = useState(false);
 
   const inputRef = useRef(null);
+
   useClickOutside(inputRef, () => {
     setShowOption(false);
     setCarManufacturers(manufacturers);
@@ -32,7 +33,7 @@ const SearcManufacturer = ({
       const filteredManufacturer = carManufacturers.filter((manufacturer) =>
         manufacturer.toLowerCase().includes(query.toLowerCase())
       );
-      setCarManufacturers(carManufacturers);
+      setCarManufacturers(filteredManufacturer);
       setQuery(e.target.value);
       setShowOption(true);
     }

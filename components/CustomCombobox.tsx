@@ -21,7 +21,7 @@ const Options = ({ show, afterLeave, className, children }: OptionsProps) => {
       leaveTo="opacity-0"
       afterLeave={afterLeave}
     >
-      <div className="absolute w-full top-12 bg-white">
+      <div className="absolute w-full top-12 z-[11] bg-white">
         <ComboboxOptions className={className}>{children}</ComboboxOptions>
       </div>
     </Transition>

@@ -19,7 +19,7 @@ const Navbar = () => {
 
         <CustomButton
           type="button"
-          className="py-2 px-3 border border-gray-400 bg-white rounded-full"
+          className="py-2 px-3 border border-opacity-50 bg-white text-sm rounded-full"
         >
           Sign In
         </CustomButton>

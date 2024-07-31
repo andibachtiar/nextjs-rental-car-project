@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar";
 import CustomFilter from "./CustomFilter";
 import SearcManufacturer from "./SearcManufacturer";
 import CarCard from "./CarCard";
+import CarDetail from "./CarDetail";
 
 export {
   Hero,
@@ -12,4 +13,5 @@ export {
   CustomFilter,
   SearcManufacturer,
   CarCard,
+  CarDetail,
 };

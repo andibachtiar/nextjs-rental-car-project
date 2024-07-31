@@ -1,11 +1,20 @@
 import { CarCard, CustomFilter, SearchBar } from "@/components";
 import Hero from "@/components/Hero";
-import { CarsType, IsError, getCars, isError } from "@/utils";
-import Image from "next/image";
-import { isArray } from "util";
+import { CarsType, getCars, getCarsProps, isError } from "@/utils";
 
-export default async function Home() {
-  const cars: CarsType[] = await getCars("corolla");
+type PageProps = {
+  searchParams: getCarsProps;
+};
+
+export default async function Home({ searchParams }: PageProps) {
+  const cars: CarsType[] = await getCars({
+    model: searchParams.model,
+    limit: searchParams.limit,
+    manufacturer: searchParams.manufacturer,
+    year: searchParams.year,
+  });
+
+  console.log(searchParams);
 
   return (
     <main className="overflow-hidden">
@@ -19,14 +28,11 @@ export default async function Home() {
 
         <div className="home__filters">
           <SearchBar />
-
-          {/* <div className="home__folter-container">
-            <CustomFilter title="fuel" />
-            <CustomFilter title="year" />
-          </div> */}
         </div>
 
-        <section>
+        {/* {getCarImageUrl(cars[0])} */}
+
+        <section className="mt-10">
           {isError(cars) && (
             <div>
               <h2 className="text-black text-xl">Oops! No results</h2>
@@ -34,12 +40,14 @@ export default async function Home() {
             </div>
           )}
 
-          {Array.isArray(cars) && cars.length > 0 && (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+          {Array.isArray(cars) && cars.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6">
               {cars.map((car, index) => {
                 return <CarCard car={car} key={index} />;
               })}
             </div>
+          ) : (
+            <div>Opps.. Car not Found</div>
           )}
         </section>
       </div>
